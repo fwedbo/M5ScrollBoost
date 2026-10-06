@@ -27,7 +27,6 @@ enum BoostMode: String, CaseIterable, Identifiable {
 enum BoostStrength: String, CaseIterable, Identifiable {
     case gentle
     case balanced
-    case strong
 
     var id: String { rawValue }
 
@@ -35,7 +34,6 @@ enum BoostStrength: String, CaseIterable, Identifiable {
         switch self {
         case .gentle: return "Gentle — experimental"
         case .balanced: return "Balanced"
-        case .strong: return "Strong"
         }
     }
 
@@ -44,8 +42,8 @@ enum BoostStrength: String, CaseIterable, Identifiable {
         switch value {
         case "Gentle", "Gentle [blit 4B, 3-deep]": return .gentle
         case "Balanced", "Balanced [sin/cos 4K, 3-deep]": return .balanced
-        case "Strong": return .strong
-        default: return .balanced
+        case "strong", "Strong": return .balanced
+        default: return .gentle
         }
     }
 
@@ -53,7 +51,6 @@ enum BoostStrength: String, CaseIterable, Identifiable {
         switch self {
         case .gentle: return 4_096
         case .balanced: return 8_192
-        case .strong: return 16_384
         }
     }
 
@@ -61,24 +58,23 @@ enum BoostStrength: String, CaseIterable, Identifiable {
         switch self {
         case .gentle: return 64
         case .balanced: return 128
-        case .strong: return 256
         }
     }
 
     var queuedBufferCount: Int {
         switch self {
-        case .gentle, .balanced, .strong: return 3
+        case .gentle, .balanced: return 3
         }
     }
 
-    /// Gentle submits a four-byte blit; Balanced and Strong use compute.
+    /// Gentle submits a four-byte blit; Balanced uses compute.
     /// All profiles retain three queued buffers with no sleep between
     /// submissions. Earlier compute-based Gentle measurements do not
     /// validate this experimental blit profile.
     var isBlit: Bool {
         switch self {
         case .gentle: return true
-        case .balanced, .strong: return false
+        case .balanced: return false
         }
     }
 }
@@ -196,7 +192,7 @@ private final class MetalBoostEngine {
         self.commandQueue = queue
         self.pipeline = try device.makeComputePipelineState(function: function)
 
-        let elementCount = BoostStrength.strong.threadCount
+        let elementCount = 16_384
         let byteCount = elementCount * MemoryLayout<Float>.stride
         guard let workBuffer = device.makeBuffer(length: byteCount, options: .storageModeShared) else {
             throw MetalBoostError.noBuffer
@@ -351,7 +347,7 @@ private final class MetalBoostEngine {
 }
 
 final class BoostController: ObservableObject {
-    static let appVersion = "v0.90"
+    static let appVersion = "v1.0"
     @Published var mode: BoostMode {
         didSet {
             UserDefaults.standard.set(mode.rawValue, forKey: "boostMode")
