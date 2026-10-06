@@ -108,10 +108,9 @@ Recorded testing of the Gentle blit workload used the following setup:
   compatibility claim.
 - Apple Studio Display XDR, 27-inch, 5120 × 2880, fixed 120 Hz, with an
   Apple-supplied Thunderbolt cable.
-- macOS 26.6.2 and macOS 27 RC (the exact RC build was not recorded).
-- Codex conversation scrolling in the recorded macOS 26.6.2 session. The
-  macOS 27 RC foreground application and a reproducible test page were not
-  recorded.
+- macOS 26.6.2 and macOS 27.0.1; the app is currently running on 27.0.1.
+- Codex conversation scrolling in the recorded macOS 26.6.2 session. A
+  reproducible test page was not recorded.
 
 The Gentle blit workload was reported smooth and associated with elevated
 GPU frequency on macOS 27. A subsequent macOS 26.6.2 session still stuttered
