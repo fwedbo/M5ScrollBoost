@@ -32,7 +32,7 @@ enum BoostStrength: String, CaseIterable, Identifiable {
 
     var label: String {
         switch self {
-        case .gentle: return "Gentle — experimental"
+        case .gentle: return "Gentle"
         case .balanced: return "Balanced"
         }
     }
