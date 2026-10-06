@@ -352,7 +352,7 @@ private final class MetalBoostEngine {
 }
 
 final class BoostController: ObservableObject {
-    static let appVersion = "v0.10"
+    static let appVersion = "v0.90"
     @Published var mode: BoostMode {
         didSet {
             UserDefaults.standard.set(mode.rawValue, forKey: "boostMode")
