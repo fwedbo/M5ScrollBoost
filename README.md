@@ -1,5 +1,7 @@
 # M5 Scroll Boost
 
+Current version: **0.90 (experimental)**.
+
 An experimental macOS menu-bar workaround for scrolling stutter on external
 5K displays at high refresh rates. It submits repeated short Metal workloads
 while scrolling, or continuously when selected. It does not directly set GPU
@@ -99,7 +101,7 @@ sustained GPU rendering. It has no administrator helper, daemon, kernel
 extension, or permanent system modification. To uninstall, quit and delete
 the app; its mode and strength remain in the app's normal UserDefaults.
 
-The recorded v0.9 testing used the following setup:
+Recorded testing of the Gentle blit workload used the following setup:
 
 - M5 Pro MacBook Pro, reported as 18 CPU cores / 40 GPU cores / 48 GB memory.
   These are reported values, not a fresh hardware inventory or a general
@@ -111,7 +113,7 @@ The recorded v0.9 testing used the following setup:
   macOS 27 RC foreground application and a reproducible test page were not
   recorded.
 
-The v0.9 blit-based Gentle workload was reported smooth and associated with elevated
+The Gentle blit workload was reported smooth and associated with elevated
 GPU frequency on macOS 27. A subsequent macOS 26.6.2 session still stuttered
 despite high reported GPU clocks; reboot restored smooth scrolling. Those
 observations do not isolate an Apple-internal clock, scheduling, or compositor
