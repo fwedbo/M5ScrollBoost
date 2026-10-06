@@ -1,0 +1,19 @@
+# Local products and profiling data
+/build/
+*.app/
+*.trace/
+/s_timer*.xml
+/s_timer*_results.json
+.DS_Store
+
+# Xcode personal state and signing credentials
+xcuserdata/
+*.xcuserstate
+*.p12
+*.pfx
+*.mobileprovision
+*.provisionprofile
+*.pem
+*.key
+.env
+.env.*
