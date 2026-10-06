@@ -29,7 +29,7 @@ fi
     -parse-as-library \
     -swift-version 5 \
     -module-cache-path "$build_dir/ModuleCache" \
-    -target arm64-apple-macos14.0 \
+    -target arm64-apple-macos26.0 \
     "$project_dir/Sources/M5ScrollBoost.swift" \
     -o "$executable_dir/M5ScrollBoost" \
     -framework AppKit \

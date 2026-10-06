@@ -12,7 +12,7 @@ The app does **not** check that the processor is an M5.
 
 ## Requirements
 
-- Apple silicon Mac; the build script targets arm64 and macOS 14 or newer.
+- Apple silicon Mac; macOS 26 or 27; the build script targets arm64 with macOS 26 as its minimum.
 - Apple's Command Line Tools or Xcode with the Swift compiler.
 - AC power and a qualifying external display: at least 5000 × 2800 pixels and
   a reported refresh rate of 100 Hz or more. Studio Display XDR also qualifies
