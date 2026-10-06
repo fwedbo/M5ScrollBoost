@@ -109,24 +109,6 @@ Recorded testing of the Gentle blit workload used the following setup:
 - Apple Studio Display XDR, 27-inch, 5120 × 2880, fixed 120 Hz, with an
   Apple-supplied Thunderbolt cable.
 - macOS 26.6.2 and macOS 27.0.1; the app is currently running on 27.0.1.
-- Codex conversation scrolling in the recorded macOS 26.6.2 session. A
-  reproducible test page was not recorded.
-
-The Gentle blit workload was reported smooth and associated with elevated
-GPU frequency on macOS 27. A subsequent macOS 26.6.2 session still stuttered
-despite high reported GPU clocks; reboot restored smooth scrolling. Those
-observations do not isolate an Apple-internal clock, scheduling, or compositor
-mechanism. No matched presentation benchmark or quantitative incremental
-power measurement is claimed for this release. Detection of 165 Hz displays
-is supported by the eligibility rule but was not validated by the recorded
-120 Hz tests.
-
-For a useful comparison, keep the foreground app, scroll workload, display
-mode, energy mode, and capture length identical. Compare Off with On scroll
-at the selected strength in short repeated captures. Metal System Trace can
-generate substantial command-buffer event volume; use short
-recordings, for example three seconds. GPU frequency telemetry alone and CADisplayLink
-callback jitter do not establish foreground frame presentation quality.
 
 ## Project layout
 
