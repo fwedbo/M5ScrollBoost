@@ -88,6 +88,12 @@ reports the average GPU execution time of completed batches, updated about
 every 750 ms. This value is not display frame time, GPU frequency, total
 utilization, or a power measurement.
 
+The app stops submitting GPU work when no qualifying external display is
+connected. Disconnecting the Studio Display XDR therefore stops the workload,
+unless another qualifying external display is connected. Other external 5K
+displays at 100 Hz or higher can also qualify. The menu-bar app remains open
+and monitors for display changes.
+
 The app pauses on battery, serious or critical thermal pressure, and display
 sleep. It uses a global scroll-wheel monitor; it does not modify or record
 scroll events. If On scroll does not trigger on your system, check the menu
