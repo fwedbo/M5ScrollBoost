@@ -99,25 +99,19 @@ sustained GPU rendering. It has no administrator helper, daemon, kernel
 extension, or permanent system modification. To uninstall, quit and delete
 the app; its mode and strength remain in the app's normal UserDefaults.
 
-Historical testing reported the following setup:
+The recorded v0.9 testing used the following setup:
 
 - M5 Pro MacBook Pro, reported as 18 CPU cores / 40 GPU cores / 48 GB memory.
-  These are the original investigation's reported values, not a fresh
-  hardware inventory or a general compatibility claim.
+  These are reported values, not a fresh hardware inventory or a general
+  compatibility claim.
 - Apple Studio Display XDR, 27-inch, 5120 × 2880, fixed 120 Hz, with an
   Apple-supplied Thunderbolt cable.
-- macOS 26.6.2; macOS 27 beta build 26A5425a; later macOS 27 RC testing
-  (the exact RC build was not recorded).
-- Chrome scrolling in early tests; later Codex conversation scrolling.
-  Exact Chrome versions and a reproducible page were not recorded.
+- macOS 26.6.2 and macOS 27 RC (the exact RC build was not recorded).
+- Codex conversation scrolling in the recorded macOS 26.6.2 session. The
+  macOS 27 RC foreground application and a reproducible test page were not
+  recorded.
 
-Earlier **v0.2 compute-based Gentle** produced 400/404 one-interval frames
-(99.0%) in one three-second Chrome capture. That is historical evidence for
-a different workload, not a performance result for the current blit-based
-Gentle or this release. The removed Trace-friendly strength had separate
-results and was subjectively less fluid; it does not characterize Gentle.
-
-Later v0.9 blit-based Gentle was reported smooth and associated with elevated
+The v0.9 blit-based Gentle workload was reported smooth and associated with elevated
 GPU frequency on macOS 27. A subsequent macOS 26.6.2 session still stuttered
 despite high reported GPU clocks; reboot restored smooth scrolling. Those
 observations do not isolate an Apple-internal clock, scheduling, or compositor
@@ -129,8 +123,8 @@ is supported by the eligibility rule but was not validated by the recorded
 For a useful comparison, keep the foreground app, scroll workload, display
 mode, energy mode, and capture length identical. Compare Off with On scroll
 at the selected strength in short repeated captures. Metal System Trace can
-generate substantial command-buffer event volume; historical tests used
-three-second recordings. GPU frequency telemetry alone and CADisplayLink
+generate substantial command-buffer event volume; use short
+recordings, for example three seconds. GPU frequency telemetry alone and CADisplayLink
 callback jitter do not establish foreground frame presentation quality.
 
 ## Project layout
