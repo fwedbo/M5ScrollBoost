@@ -7,7 +7,6 @@ import SwiftUI
 enum BoostMode: String, CaseIterable, Identifiable {
     case off
     case onScroll = "on_scroll"
-    case continuous
 
     var id: String { rawValue }
 
@@ -15,12 +14,12 @@ enum BoostMode: String, CaseIterable, Identifiable {
         switch self {
         case .off: return "Off"
         case .onScroll: return "On scroll"
-        case .continuous: return "Continuous"
         }
     }
 
     static func restored(from value: String?) -> BoostMode {
         if let value, let mode = Self(rawValue: value) { return mode }
+        // Retired modes, including Continuous, migrate to On scroll.
         return allCases.first(where: { $0.label == value }) ?? .onScroll
     }
 }
@@ -528,8 +527,6 @@ final class BoostController: ObservableObject {
             } else if !isBoosting {
                 statusText = "Ready — waiting for scrolling"
             }
-        case .continuous:
-            startBoost(status: "Continuous boost active")
         }
     }
 
