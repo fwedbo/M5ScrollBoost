@@ -1,10 +1,10 @@
 # M5 Scroll Boost
 
-Current version: **0.90 (experimental)**.
+Current version: **1.0 (experimental)**.
 
 An experimental macOS menu-bar workaround for scrolling stutter on external
 5K displays at high refresh rates. It submits repeated short Metal workloads
-while scrolling, or continuously when selected. It does not directly set GPU
+while scrolling. It does not directly set GPU
 clocks or make permanent system changes.
 
 This project grew out of testing an M5 Pro MacBook Pro with an Apple Studio
@@ -62,26 +62,26 @@ distribution experience. Source builds are the initial distribution method.
 
 ## Controls
 
-New installations default to **On scroll + Balanced**. Settings use stable
-identifiers, and recognized settings from older versions are migrated. An
-unrecognized strength falls back to Balanced.
+New installations default to **On scroll + Gentle**. Settings use stable
+identifiers, and recognized settings from older versions are migrated. A
+missing or unrecognized strength falls back to Gentle. A previously saved
+Continuous mode selection migrates to On scroll, and Strong migrates to
+Balanced. Existing Gentle and Balanced selections are preserved.
 
 | Mode | Behavior |
 | --- | --- |
 | Off | No GPU work is submitted. |
 | On scroll | Activates while scrolling with the pointer on a qualifying external display; stops 0.9 seconds after the last scroll event. |
-| Continuous | Submits work while a qualifying display is connected and the power, thermal, and sleep checks permit it. |
 
 | Strength | Current workload per buffer |
 | --- | --- |
 | Gentle — experimental | Four-byte Metal blit fill. |
 | Balanced | 8,192 threads × 128 dependent sin/cos iterations. |
-| Strong | 16,384 threads × 256 dependent sin/cos iterations. |
 
-All three strengths retain three queued command buffers with no deliberate
-sleep between submissions. Start with the default; compare Gentle if you
-want to try the experimental blit workload. Strong adds more compute work
-and may compete with the foreground app.
+Both strengths retain three queued command buffers with no deliberate
+sleep between submissions. Start with Gentle; try Balanced if scrolling
+does not improve. Balanced adds compute work and may compete with the
+foreground app.
 
 The filled bolt indicates the controller has requested boosting. The menu
 reports the average GPU execution time of completed batches, updated about
@@ -91,7 +91,7 @@ utilization, or a power measurement.
 The app pauses on battery, serious or critical thermal pressure, and display
 sleep. It uses a global scroll-wheel monitor; it does not modify or record
 scroll events. If On scroll does not trigger on your system, check the menu
-status and compare with Continuous mode.
+status and confirm the pointer is on a qualifying external display.
 
 ## Limitations and testing
 

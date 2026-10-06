@@ -1,9 +1,11 @@
 # Changelog
 
-## 0.90
+## 1.0
 
+- Remove Continuous mode; saved Continuous selections migrate to On scroll.
+- Keep Gentle and Balanced; saved Strong selections migrate to Balanced.
+- Default new installations and missing or unrecognized strengths to Gentle.
 - Store stable settings identifiers and migrate recognized older labels.
-  Missing or unrecognized strengths now default to Balanced.
 - Restrict the Studio Display XDR name fallback to reported 0 Hz, so a known
   60 Hz mode no longer qualifies.
 - Prevent the controller from displaying boosting when Metal initialization
