@@ -10,8 +10,8 @@
   60 Hz mode no longer qualifies.
 - Prevent the controller from displaying boosting when Metal initialization
   failed.
-- Use the app name M5 Scroll Boost consistently in the menu and mark Gentle
-  experimental. Document the actual Balanced workload.
+- Use the app name M5 Scroll Boost consistently in the menu and simplify the
+  strength labels to Gentle and Balanced. Document the actual Balanced workload.
 - Add reproducible build instructions and `--no-open` for build verification.
 - Preserve the existing Gentle blit workload and regular three-buffer scheduling.
 

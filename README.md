@@ -75,7 +75,7 @@ Balanced. Existing Gentle and Balanced selections are preserved.
 
 | Strength | Current workload per buffer |
 | --- | --- |
-| Gentle — experimental | Four-byte Metal blit fill. |
+| Gentle | Four-byte Metal blit fill. |
 | Balanced | 8,192 threads × 128 dependent sin/cos iterations. |
 
 Both strengths retain three queued command buffers with no deliberate
