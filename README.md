@@ -116,6 +116,13 @@ Recorded testing of the Gentle blit workload used the following setup:
   Apple-supplied Thunderbolt cable.
 - macOS 26.6.2 and macOS 27.0.1; the app is currently running on 27.0.1.
 
+## Scroll Replay companion app
+
+[Scroll Replay](Tools/ScrollReplay/README.md) repeats native scroll input in
+Chrome for Off/On comparisons and video demonstrations. It has configurable
+speed, duration, direction, a countdown, and Escape cancellation. It builds
+separately and can also be used without M5ScrollBoost.
+
 ## Project layout
 
 - `Sources/M5ScrollBoost.swift` — menu, display/power checks, and Metal engine.
