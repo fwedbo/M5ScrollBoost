@@ -19,3 +19,10 @@ jobs:
         run: |
           plutil -lint build/M5ScrollBoost.app/Contents/Info.plist
           codesign --verify --deep --strict build/M5ScrollBoost.app
+      - name: Build Scroll Replay companion
+        run: bash Tools/ScrollReplay/build.command --no-open
+      - name: Verify Scroll Replay
+        run: |
+          plutil -lint build/ScrollReplay/ScrollReplay.app/Contents/Info.plist
+          codesign --verify --strict build/ScrollReplay/ScrollReplay.app
+          build/ScrollReplay/ScrollReplay.app/Contents/MacOS/ScrollReplay --self-test
